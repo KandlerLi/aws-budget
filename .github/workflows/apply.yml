@@ -20,7 +20,7 @@ concurrency:
 
 jobs:
   terraform:
-    uses: KandlerLi/gha-common/.github/workflows/terraform-apply.yml@v0.0.4
+    uses: KandlerLi/gha-common/.github/workflows/terraform-apply.yml@v0.0.5
     with:
       aws_region: us-east-1
       extra_repo_vars: "ALERT_EMAIL"
