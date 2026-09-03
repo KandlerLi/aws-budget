@@ -6,7 +6,7 @@ on:
 
 jobs:
   terraform:
-    uses: KandlerLi/gha-common/.github/workflows/terraform-checks.yml@v0.0.2
+    uses: KandlerLi/gha-common/.github/workflows/terraform-checks.yml@v0.0.4
     with:
       aws_region: us-east-1
       extra_repo_vars: "ALERT_EMAIL"
@@ -14,4 +14,10 @@ jobs:
     permissions:
       contents: read
       id-token: write
-      packages: read
+      # A caller's job-level permissions cap every nested job inside the
+      # reusable workflow -- must cover the union of what any of them
+      # ask for, not just one. build-image needs write (pushes to
+      # GHCR); packages: read here failed with "requesting
+      # 'packages: write', but is only allowed 'packages: read'" the
+      # first time this was tried (2026-09-03).
+      packages: write
