@@ -5,7 +5,6 @@ resource "aws_budgets_budget" "monthly_cost_alert" {
   limit_unit   = "USD"
   time_unit    = "MONTHLY"
 
-  # Early warning, before the limit is actually reached.
   notification {
     comparison_operator        = "GREATER_THAN"
     threshold                  = 80
@@ -14,7 +13,6 @@ resource "aws_budgets_budget" "monthly_cost_alert" {
     subscriber_email_addresses = [var.alert_email]
   }
 
-  # The actual "you've reached the limit" alert.
   notification {
     comparison_operator        = "GREATER_THAN"
     threshold                  = 100
@@ -23,9 +21,6 @@ resource "aws_budgets_budget" "monthly_cost_alert" {
     subscriber_email_addresses = [var.alert_email]
   }
 
-  # Forecasted to exceed the limit by month's end, even before actual
-  # spend gets there -- catches a runaway cost early rather than after
-  # a full month of it.
   notification {
     comparison_operator        = "GREATER_THAN"
     threshold                  = 100
