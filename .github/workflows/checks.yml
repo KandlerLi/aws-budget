@@ -6,7 +6,7 @@ on:
 
 jobs:
   terraform:
-    uses: KandlerLi/gha-common/.github/workflows/terraform-checks.yml@v1.0.0
+    uses: KandlerLi/gha-common/.github/workflows/terraform-checks.yml@9b594057630d8421509ccc73f70476ced5f2377c
     with:
       aws_region: us-east-1
     secrets: inherit
