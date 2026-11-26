@@ -75,11 +75,8 @@ the Terraform apply *is* the deployment.
 
 ## Runner
 
-Unlike `website`, this repository uses the self-hosted home runner
-(`[self-hosted, home, debian]`), the same as `dyndns`. It was added to
-`repo-infra`'s `config.yml` with `runner: true`; the runner itself is
-registered via `home-infra`'s `scripts/sync_github_runner_repositories.py`
-and the `github-runner.yml` playbook.
+GitHub-hosted (`ubuntu-latest`), through `gha-common`'s reusable workflows
+since its v2.0.0: nothing here needs the home network.
 
 ## Local validation
 
